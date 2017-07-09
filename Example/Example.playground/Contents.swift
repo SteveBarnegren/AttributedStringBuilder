@@ -3,8 +3,6 @@
 import UIKit
 import AttributedStringBuilder
 
-var str = "Hello, playground"
-
 let builder = AttributedStringBuilder()
 
 let shadow = NSShadow()
@@ -16,18 +14,20 @@ builder.defaultAttributes = [
     .font( UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold) ),
     .underline(true),
     .strikethrough(true),
-    .shadow(shadow)
+    .shadow(shadow),
+    .alignment(.center),
+    .lineSpacing(7),
 ]
 
 builder
-    .text("Hello, it's a")
+    .text("Hello, it's a", attributes: [.alignment(.left)])
     .space(attributes: [.strikethrough(false), .underline(false)])
     .text("blue", attributes: [.textColor(UIColor.blue),
                                .shadow(nil),
                                .baselineOffset(10),
                                .underlineColor(UIColor.orange),
                                .strikethroughColor(UIColor.green),
-                               .expansion(1)]
+                               .expansion(1),]
     )
     .tabs(2)
     .text(" word")
