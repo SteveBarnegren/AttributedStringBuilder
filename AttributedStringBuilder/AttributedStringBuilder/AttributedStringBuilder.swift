@@ -10,7 +10,78 @@ import Foundation
 
 public class AttributedStringBuilder {
     
-
+    // MARK: - Types
+    
+    public enum Attribute {
+        case font(UIFont)                   // NSFontAttributeName
+                                            // NSParagraphStyleAttributeName
+        case textColor(UIColor?)            // NSForegroundColorAttributeName
+        case backgroundColor(UIColor?)      // NSBackgroundColorAttributeName
+        case ligitures(Bool)                // NSLigatureAttributeName
+        case kerning(Double)                // NSKernAttributeName
+        case strikethrough(Bool)            // NSStrikethroughStyleAttributeName
+        case underline(Bool)                // NSUnderlineStyleAttributeName
+        case strokeColor(UIColor)           // NSStrokeColorAttributeName
+        case strokeWidth(Double)            // NSStrokeWidthAttributeName
+        case shadow(NSShadow?)              // NSShadowAttributeName
+                                            // NSTextEffectAttributeName
+                                            // NSAttachmentAttributeName
+                                            // NSLinkAttributeName
+        case baselineOffset(Double)         // NSBaselineOffsetAttributeName
+        case underlineColor(UIColor?)       // NSUnderlineColorAttributeName
+        case strikethroughColor(UIColor?)   // NSStrikethroughColorAttributeName
+        case skew(Double)                   // NSObliquenessAttributeName
+        case expansion(Double)              // NSExpansionAttributeName
+                                            // NSWritingDirectionAttributeName
+                                            // NSVerticalGlyphFormAttributeName (mac os only)
+        
+        var key: String {
+            return keyAndValue(for: self).0
+        }
+        
+        var value: Any? {
+            return keyAndValue(for: self).1
+        }
+        
+        private func keyAndValue(for attribute: Attribute) -> (String, Any?) {
+            
+            switch attribute {
+            case .font(let value):
+                return (NSFontAttributeName, value)
+            case .textColor(let value):
+                return (NSForegroundColorAttributeName, value)
+            case .backgroundColor(let value):
+                return (NSBackgroundColorAttributeName, value)
+            case .ligitures(let value):
+                return (NSLigatureAttributeName, value)
+            case .kerning(let value):
+                return (NSKernAttributeName, value)
+            case .strikethrough(let value):
+                return (NSStrikethroughStyleAttributeName, value)
+            case .underline(let value):
+                return (NSUnderlineStyleAttributeName, value)
+            case .strokeColor(let value):
+                return (NSStrokeColorAttributeName, value)
+            case .strokeWidth(let value):
+                return (NSStrokeWidthAttributeName, value)
+            case .shadow(let value):
+                return (NSShadowAttributeName, value)
+            case .baselineOffset(let value):
+                return (NSBaselineOffsetAttributeName, value)
+            case .underlineColor(let value):
+                return (NSUnderlineColorAttributeName, value)
+            case .strikethroughColor(let value):
+                return (NSStrikethroughColorAttributeName, value)
+            case .skew(let value):
+                return (NSObliquenessAttributeName, value)
+            case .expansion(let value):
+                return (NSExpansionAttributeName, value)
+                
+            }
+        }
+    }
+    
+    // MARK: - Properties
 
     private var masterAttributedString = NSMutableAttributedString()
     
@@ -20,105 +91,79 @@ public class AttributedStringBuilder {
     
     // MARK: - Defaults
     
-    public var defaultFont = UIFont.systemFont(ofSize: 12, weight: UIFontWeightMedium)
-    public var defaultTextColor = UIColor.darkText
-    public var defaultBackgroundColor: UIColor? = nil
-    public var defaultKerning = 1.0
-    public var defaultUseStrikethrough = false
-    public var defaultUseUnderline = false
-    public var defaultStrokeColor: UIColor? = nil
-    public var defaultStokeWidth = 0.0
+    public var defaultAttributes = [Attribute]()
     
+    public func clearDefaultAttributes() {
+        defaultAttributes.removeAll()
+    }
     
-    // MARK: - Methods
+    // MARK: - Text
     
     public init() {}
     
-    public func appendText(_ text: String) {
+//    public func text(_ string: String) -> AttributedStringBuilder {
+//        
+//        return text(string, attributes: [])
+//    }
+    
+    @discardableResult public func text(_ string: String, attributes: [Attribute] = []) -> AttributedStringBuilder {
         
-        let attributes = makeAttributes()
-        let string = NSAttributedString(string: text, attributes: attributes)
-        masterAttributedString.append(string)
+        let attributes = attributesDictionary(withOverrides: attributes)
+        let attributedString = NSAttributedString(string: string, attributes: attributes)
+        masterAttributedString.append(attributedString)
+        return self;
+    }
+    
+    @discardableResult public func spaces(_ number: Int, attributes: [Attribute] = []) -> AttributedStringBuilder {
+        
+        (0..<number).forEach{ _ in
+            space(attributes: attributes)
+        }
+        
+        return self
+    }
+    
+    @discardableResult public func space(attributes: [Attribute] = []) -> AttributedStringBuilder {
+        return text(" ", attributes: attributes)
+    }
+    
+    @discardableResult public func newlines(_ number: Int, attributes: [Attribute] = []) -> AttributedStringBuilder {
+        
+        (0..<number).forEach{ _ in
+            newline(attributes: attributes)
+        }
+        
+        return self
+    }
+    
+    @discardableResult public func newline(attributes: [Attribute] = []) -> AttributedStringBuilder {
+        return text("\n", attributes: attributes)
+    }
+    
+    @discardableResult public func tabs(_ number: Int, attributes: [Attribute] = []) -> AttributedStringBuilder {
+        
+        (0..<number).forEach{ _ in
+            tab(attributes: attributes)
+        }
+        
+        return self
+    }
+    
+    @discardableResult public func tab(attributes: [Attribute] = []) -> AttributedStringBuilder {
+        return text("\t", attributes: attributes)
     }
     
     // MARK: - Create attributes
     
-    private func makeAttributes(withOverrides overrides: Dictionary<String, Any>) -> Dictionary<String, Any> {
+    private func attributesDictionary(withOverrides overrides: [Attribute]) -> Dictionary<String, Any> {
         
-        var attributes = makeAttributes()
+        var attributesDict = Dictionary<String, Any>()
         
-        overrides.keys.forEach{
-            attributes[$0] = overrides[$0]
+        (defaultAttributes + overrides).forEach{
+            attributesDict[$0.key] = $0.value
         }
         
-        return attributes
+        return attributesDict
     }
-    
-    private func makeAttributes() -> Dictionary<String, Any> {
-        
-        var attributes = Dictionary<String, Any>()
-        
-        // NSFontAttributeName
-        attributes[NSFontAttributeName] = defaultFont
-        
-        // NSParagraphStyleAttributeName
-        
-        // NSForegroundColorAttributeName
-        attributes[NSForegroundColorAttributeName] = defaultTextColor
-        
-        // NSBackgroundColorAttributeName
-        if let backgroundColor = defaultBackgroundColor {
-            attributes[NSBackgroundColorAttributeName] = backgroundColor
-        }
-        
-        // NSLigatureAttributeName
-        
-        // NSKernAttributeName
-        attributes[NSKernAttributeName] = defaultKerning
-        
-        // NSStrikethroughStyleAttributeName
-        attributes[NSStrikethroughStyleAttributeName] = defaultUseStrikethrough
-        
-        // NSUnderlineStyleAttributeName
-        attributes[NSUnderlineStyleAttributeName] = defaultUseUnderline
-        
-        // NSStrokeColorAttributeName
-        if let strokeColor = defaultStrokeColor {
-            attributes[NSStrokeColorAttributeName] = strokeColor
-        }
-        
-        // NSStrokeWidthAttributeName
-        attributes[NSStrokeWidthAttributeName] = defaultStokeWidth
-        
-        // NSShadowAttributeName
-        
-        // NSTextEffectAttributeName
-        
-        // NSAttachmentAttributeName
-        
-        // NSLinkAttributeName
-        
-        // NSBaselineOffsetAttributeName
-        
-        // NSUnderlineColorAttributeName
-        
-        // NSStrikethroughColorAttributeName
-        
-        // NSObliquenessAttributeName
-        
-        // NSExpansionAttributeName
-        
-        // NSWritingDirectionAttributeName
-        
-        // NSVerticalGlyphFormAttributeName
-        
-        return attributes
-    }
-    
-    
-    
-    
-    
-    
     
 }

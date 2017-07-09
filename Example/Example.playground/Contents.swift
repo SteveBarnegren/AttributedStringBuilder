@@ -6,16 +6,32 @@ import AttributedStringBuilder
 var str = "Hello, playground"
 
 let builder = AttributedStringBuilder()
-builder.defaultFont = UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold)
-builder.defaultTextColor = UIColor.orange
-builder.defaultKerning = 1
-//builder.defaultBackgroundColor = UIColor.red
-builder.defaultUseUnderline = true
-//builder.defaultStrokeColor = UIColor.magenta
-//builder.defaultStokeWidth = 1.0
 
+let shadow = NSShadow()
+shadow.shadowColor = UIColor.brown
+shadow.shadowBlurRadius = 5
 
-builder.appendText("Hello")
-builder.appendText("This is a test")
+builder.defaultAttributes = [
+    .textColor( UIColor.red ),
+    .font( UIFont.systemFont(ofSize: 16, weight: UIFontWeightSemibold) ),
+    .underline(true),
+    .strikethrough(true),
+    .shadow(shadow)
+]
+
+builder
+    .text("Hello, it's a")
+    .space(attributes: [.strikethrough(false), .underline(false)])
+    .text("blue", attributes: [.textColor(UIColor.blue),
+                               .shadow(nil),
+                               .baselineOffset(10),
+                               .underlineColor(UIColor.orange),
+                               .strikethroughColor(UIColor.green),
+                               .expansion(1)]
+    )
+    .tabs(2)
+    .text(" word")
+    .newlines(2)
+    .text(" init", attributes: [.strikethrough(false), .kerning(3)])
 
 builder.attributedString
