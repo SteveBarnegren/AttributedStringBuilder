@@ -200,6 +200,8 @@ public class AttributedStringBuilder {
             let key = $0.key
             let value = $0.value
             
+            //print("key \(key) value: \(String(describing: value))")
+            
             if key == NSParagraphStyleAttributeName {
                 $0.configureParagraphStyle(paragraphStyle)
             }
