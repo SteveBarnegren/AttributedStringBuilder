@@ -11,7 +11,7 @@
 - Easliy render images in strings
 - 'Swifty' api
 
-## How to use
+## Usage
 
 ### Import the AttributedStringBuilder module
 
@@ -46,6 +46,8 @@ builder
 builder.attributedString
 ```
 
+![Basic Example 1](https://user-images.githubusercontent.com/6288713/28088062-749ad540-667c-11e7-8bc4-cc926a4c8da9.png)
+
 ### Another Example
 
 By chaining method calls together, complex AttributedStrings can be created with just a few lines of code
@@ -67,7 +69,7 @@ builder
 
 builder.attributedString
 ```
-
+![Basic Example 2](https://user-images.githubusercontent.com/6288713/28088068-7929295e-667c-11e7-9106-d897fe3dc12b.png)
 
 ### A More Complex Example
 
@@ -116,6 +118,7 @@ builder
 
 builder.attributedString
 ```
+![Shadow Example](https://user-images.githubusercontent.com/6288713/28088085-7e3f16d8-667c-11e7-806d-b54d8f90d0a2.png)
 
 ### Images
 
@@ -139,7 +142,7 @@ builder
     .image(image, withSizeFittingFontLowercase: font)
 ```
 
-
+![Images Example](https://user-images.githubusercontent.com/6288713/28088088-8117069a-667c-11e7-841d-f67c931a143a.png)
 
 ## Installation
 
