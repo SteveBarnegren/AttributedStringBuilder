@@ -1,21 +1,23 @@
-//: Playground - noun: a place where people can play
-
+/*: 
+ ## Basic Example
+ */
 import UIKit
 import AttributedStringBuilder
-
-let font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightRegular)
-
-// Make an AttributedStringBuilder
+/*:
+ **Make an `AttributedStringBuider`**
+ */
 let builder = AttributedStringBuilder()
-
-// Set Some Default Attributes
+/*:
+ **Set some default attributes**
+ */
 builder.defaultAttributes = [
     .textColor(UIColor.black),
-    .font(font),
+    .font( UIFont.systemFont(ofSize: 16, weight: UIFontWeightRegular) ),
     .alignment(.center),
 ]
-
-// Build the string. Additional attributes can be supplied to override defaults
+/*:
+ **Build the string. Additional attributes can be supplied to override defaults**
+ */
 builder
     .text("Attributed strings can make")
     .space()
@@ -23,5 +25,8 @@ builder
     .space()
     .text("pop out")
 
-// Display the string
+/*:
+ **Retrive the string by calling `builder.attributedString`**
+ */
 builder.attributedString
+//: [Next](@next)

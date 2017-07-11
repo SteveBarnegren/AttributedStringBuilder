@@ -1,24 +1,6 @@
 //: [Previous](@previous)
-
-import Foundation
-import UIKit
-import AttributedStringBuilder
-
-
-let builder = AttributedStringBuilder()
-
-let image = UIImage(named: "Monkey")!
-
-builder
-    .text("Hello")
-    //.image(image)
-
-builder.attributedString
-
-
-
-
-
-
-
+/*:
+ ## I had hoped to show how to add images to attributed strings on this page, but NSTextAttachment crashes playgounds at the moment.
+ ## See the example app project to see how to use images
+ */
 //: [Next](@next)
