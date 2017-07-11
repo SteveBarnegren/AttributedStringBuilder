@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class AttributedStringBuilder {
     
@@ -21,20 +22,20 @@ public class AttributedStringBuilder {
         case textColor(UIColor?)                // NSForegroundColorAttributeName
         case backgroundColor(UIColor?)          // NSBackgroundColorAttributeName
         case ligitures(Bool)                    // NSLigatureAttributeName
-        case kerning(CGFloat)                    // NSKernAttributeName
+        case kerning(CGFloat)                   // NSKernAttributeName
         case strikethrough(Bool)                // NSStrikethroughStyleAttributeName
         case underline(Bool)                    // NSUnderlineStyleAttributeName
         case strokeColor(UIColor)               // NSStrokeColorAttributeName
-        case strokeWidth(CGFloat)                // NSStrokeWidthAttributeName
+        case strokeWidth(CGFloat)               // NSStrokeWidthAttributeName
         case shadow(NSShadow?)                  // NSShadowAttributeName
                                                 // NSTextEffectAttributeName
                                                 // NSAttachmentAttributeName
                                                 // NSLinkAttributeName
-        case baselineOffset(CGFloat)             // NSBaselineOffsetAttributeName
+        case baselineOffset(CGFloat)            // NSBaselineOffsetAttributeName
         case underlineColor(UIColor?)           // NSUnderlineColorAttributeName
         case strikethroughColor(UIColor?)       // NSStrikethroughColorAttributeName
-        case skew(CGFloat)                       // NSObliquenessAttributeName
-        case expansion(CGFloat)                  // NSExpansionAttributeName
+        case skew(CGFloat)                      // NSObliquenessAttributeName
+        case expansion(CGFloat)                 // NSExpansionAttributeName
                                                 // NSWritingDirectionAttributeName
                                                 // NSVerticalGlyphFormAttributeName (mac os only)
         
@@ -185,6 +186,55 @@ public class AttributedStringBuilder {
         return text("\t", attributes: attributes)
     }
     
+    // MARK: - Images
+    
+    @discardableResult public func image(_ anImage: UIImage) -> AttributedStringBuilder {
+                
+        let attachment = NSTextAttachment()
+        attachment.image = anImage
+        let attachmentString = NSAttributedString(attachment: attachment)
+        masterAttributedString.append(attachmentString)
+        
+        return self
+    }
+    
+    @discardableResult public func image(_ anImage: UIImage, width: CGFloat) -> AttributedStringBuilder {
+        
+        let ratio = anImage.size.height / anImage.size.width
+        let size = CGSize(width: width, height: width * ratio)
+        return image(anImage, size:size)
+    }
+    
+    @discardableResult public func image(_ anImage: UIImage, height: CGFloat) -> AttributedStringBuilder {
+        
+        let ratio = anImage.size.width / anImage.size.height
+        let size = CGSize(width: height * ratio, height: height)
+        return image(anImage, size:size)
+    }
+    
+    @discardableResult public func image(_ anImage: UIImage, size: CGSize) -> AttributedStringBuilder {
+        
+        let attachment = NSTextAttachment()
+        attachment.image = anImage
+        attachment.bounds = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        let attachmentString = NSAttributedString(attachment: attachment)
+        masterAttributedString.append(attachmentString)
+        
+        return self
+    }
+    
+    @discardableResult public func image(_ anImage: UIImage, withSizeFittingFontUppercase font: UIFont) -> AttributedStringBuilder {
+        
+        let height = font.capHeight
+        return image(anImage, height: height)
+    }
+    
+    @discardableResult public func image(_ anImage: UIImage, withSizeFittingFontLowercase font: UIFont) -> AttributedStringBuilder {
+        
+        let height = font.xHeight
+        return image(anImage, height: height)
+    }
+    
     // MARK: - Create attributes
     
     private func attributesDictionary(withOverrides overrides: [Attribute]) -> Dictionary<String, Any> {
@@ -211,6 +261,7 @@ public class AttributedStringBuilder {
         }
         
         attributesDict[NSParagraphStyleAttributeName] = paragraphStyle
+        //attributesDict[NSTextEffectAttributeName] = NSTextEffectLetterpressStyle;
         
         return attributesDict
     }

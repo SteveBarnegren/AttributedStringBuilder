@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09FE68031F14DB7A00D7ABEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FE68021F14DB7A00D7ABEA /* UIKit.framework */; };
 		67A683191F12109F007154C8 /* AttributedStringBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 67A683171F12109F007154C8 /* AttributedStringBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		67A683211F121403007154C8 /* AttributedStringBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A683201F121403007154C8 /* AttributedStringBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09FE68021F14DB7A00D7ABEA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		67A683141F12109F007154C8 /* AttributedStringBuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AttributedStringBuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67A683171F12109F007154C8 /* AttributedStringBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttributedStringBuilder.h; sourceTree = "<group>"; };
 		67A683181F12109F007154C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -23,17 +25,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09FE68031F14DB7A00D7ABEA /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09FE68011F14DB7A00D7ABEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				09FE68021F14DB7A00D7ABEA /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		67A6830A1F12109F007154C8 = {
 			isa = PBXGroup;
 			children = (
 				67A683161F12109F007154C8 /* AttributedStringBuilder */,
 				67A683151F12109F007154C8 /* Products */,
+				09FE68011F14DB7A00D7ABEA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -254,6 +266,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AttributedStringBuilder/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SteveBarnegren.AttributedStringBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -274,6 +287,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AttributedStringBuilder/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SteveBarnegren.AttributedStringBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
