@@ -12,18 +12,18 @@
 		0956EB041F151912007287C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0956EB021F151912007287C4 /* Main.storyboard */; };
 		0956EB061F151912007287C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0956EB051F151912007287C4 /* Assets.xcassets */; };
 		0956EB091F151912007287C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0956EB071F151912007287C4 /* LaunchScreen.storyboard */; };
-		0956EB181F151AEA007287C4 /* AttributedStringBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0956EB131F151AD0007287C4 /* AttributedStringBuilder.framework */; };
-		0956EB191F151AEA007287C4 /* AttributedStringBuilder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0956EB131F151AD0007287C4 /* AttributedStringBuilder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		679971E51F15650D001552B0 /* AttributedStringBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679971E41F15650D001552B0 /* AttributedStringBuilder.framework */; };
+		679971E61F15650D001552B0 /* AttributedStringBuilder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 679971E41F15650D001552B0 /* AttributedStringBuilder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		0956EB1A1F151AEA007287C4 /* Embed Frameworks */ = {
+		679971E71F15650D001552B0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0956EB191F151AEA007287C4 /* AttributedStringBuilder.framework in Embed Frameworks */,
+				679971E61F15650D001552B0 /* AttributedStringBuilder.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,6 +40,7 @@
 		0956EB0A1F151912007287C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0956EB111F1519F4007287C4 /* AttributedStringBuilder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AttributedStringBuilder.framework; path = "../../AttributedStringBuilder/build/Debug-iphoneos/AttributedStringBuilder.framework"; sourceTree = "<group>"; };
 		0956EB131F151AD0007287C4 /* AttributedStringBuilder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AttributedStringBuilder.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/ImagesExample-gfyhwyueiujgecdwtirnrnzdlbcm/Build/Products/Debug-iphonesimulator/AttributedStringBuilder.framework"; sourceTree = "<group>"; };
+		679971E41F15650D001552B0 /* AttributedStringBuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AttributedStringBuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0956EB181F151AEA007287C4 /* AttributedStringBuilder.framework in Frameworks */,
+				679971E51F15650D001552B0 /* AttributedStringBuilder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +58,7 @@
 		0956EAF21F151912007287C4 = {
 			isa = PBXGroup;
 			children = (
+				679971E41F15650D001552B0 /* AttributedStringBuilder.framework */,
 				0956EAFD1F151912007287C4 /* ImagesExample */,
 				0956EAFC1F151912007287C4 /* Products */,
 				0956EB101F1519F4007287C4 /* Frameworks */,
@@ -103,7 +105,7 @@
 				0956EAF71F151912007287C4 /* Sources */,
 				0956EAF81F151912007287C4 /* Frameworks */,
 				0956EAF91F151912007287C4 /* Resources */,
-				0956EB1A1F151AEA007287C4 /* Embed Frameworks */,
+				679971E71F15650D001552B0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

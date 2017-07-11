@@ -39,7 +39,8 @@ let awesomeAttributes: [AttributedStringBuilder.Attribute] = [
     .textColor(UIColor.yellow),
     .kerning(5),
     .shadow(shadow),
-    .skew(0.3)
+    .skew(0.3),
+    .underline(true)
 ]
 /*:
  **Build the string**
