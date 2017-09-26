@@ -249,9 +249,7 @@ public class AttributedStringBuilder {
             
             let key = $0.key
             let value = $0.value
-            
-            //print("key \(key) value: \(String(describing: value))")
-            
+                        
             if key == .paragraphStyle {
                 $0.configureParagraphStyle(paragraphStyle)
             }
@@ -261,7 +259,6 @@ public class AttributedStringBuilder {
         }
         
         attributesDict[.paragraphStyle] = paragraphStyle
-        //attributesDict[NSTextEffectAttributeName] = NSTextEffectLetterpressStyle;
         
         return attributesDict
     }
