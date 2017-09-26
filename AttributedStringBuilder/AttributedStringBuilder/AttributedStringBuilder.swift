@@ -44,7 +44,7 @@ public class AttributedStringBuilder {
         case alignment(NSTextAlignment)
         case lineSpacing(CGFloat)
         
-        var key: String {
+        var key: NSAttributedStringKey {
             return keyAndValue(for: self).0
         }
         
@@ -52,7 +52,7 @@ public class AttributedStringBuilder {
             return keyAndValue(for: self).1
         }
         
-        private func keyAndValue(for attribute: Attribute) -> (String, Any?) {
+        private func keyAndValue(for attribute: Attribute) -> (NSAttributedStringKey, Any?) {
             
             func configureParagraph(configure: (NSMutableParagraphStyle) -> () ) -> NSMutableParagraphStyle {
                 let p = NSMutableParagraphStyle()
@@ -64,43 +64,43 @@ public class AttributedStringBuilder {
                 
             // String Attributes
             case .font(let value):
-                return (NSFontAttributeName, value)
+                return (.font, value)
             case .paragraphStyle(let value):
-                return (NSParagraphStyleAttributeName, value)
+                return (.paragraphStyle, value)
             case .textColor(let value):
-                return (NSForegroundColorAttributeName, value)
+                return (.foregroundColor, value)
             case .backgroundColor(let value):
-                return (NSBackgroundColorAttributeName, value)
+                return (.backgroundColor, value)
             case .ligitures(let value):
-                return (NSLigatureAttributeName, value)
+                return (.ligature, value)
             case .kerning(let value):
-                return (NSKernAttributeName, value)
+                return (.kern, value)
             case .strikethrough(let value):
-                return (NSStrikethroughStyleAttributeName, value)
+                return (.strikethroughStyle, value)
             case .underline(let value):
-                return (NSUnderlineStyleAttributeName, value)
+                return (.underlineStyle, value)
             case .strokeColor(let value):
-                return (NSStrokeColorAttributeName, value)
+                return (.strokeColor, value)
             case .strokeWidth(let value):
-                return (NSStrokeWidthAttributeName, value)
+                return (.strokeWidth, value)
             case .shadow(let value):
-                return (NSShadowAttributeName, value)
+                return (.shadow, value)
             case .baselineOffset(let value):
-                return (NSBaselineOffsetAttributeName, value)
+                return (.baselineOffset, value)
             case .underlineColor(let value):
-                return (NSUnderlineColorAttributeName, value)
+                return (.underlineColor, value)
             case .strikethroughColor(let value):
-                return (NSStrikethroughColorAttributeName, value)
+                return (.strikethroughColor, value)
             case .skew(let value):
-                return (NSObliquenessAttributeName, value)
+                return (.obliqueness, value)
             case .expansion(let value):
-                return (NSExpansionAttributeName, value)
+                return (.expansion, value)
                 
             // Paragraph Attributes
             case .alignment(_):
-                return (NSParagraphStyleAttributeName, nil)
+                return (.paragraphStyle, nil)
             case .lineSpacing(_):
-                return (NSParagraphStyleAttributeName, nil)
+                return (.paragraphStyle, nil)
             }
         }
         
@@ -237,11 +237,11 @@ public class AttributedStringBuilder {
     
     // MARK: - Create attributes
     
-    private func attributesDictionary(withOverrides overrides: [Attribute]) -> Dictionary<String, Any> {
+    private func attributesDictionary(withOverrides overrides: [Attribute]) -> Dictionary<NSAttributedStringKey, Any> {
         
         // NSParagraphStyle is cumulative, everything else overrides the previous
         
-        var attributesDict = Dictionary<String, Any>()
+        var attributesDict = Dictionary<NSAttributedStringKey, Any>()
         
         let paragraphStyle = NSMutableParagraphStyle()
         
@@ -252,7 +252,7 @@ public class AttributedStringBuilder {
             
             //print("key \(key) value: \(String(describing: value))")
             
-            if key == NSParagraphStyleAttributeName {
+            if key == .paragraphStyle {
                 $0.configureParagraphStyle(paragraphStyle)
             }
             else{
@@ -260,7 +260,7 @@ public class AttributedStringBuilder {
             }
         }
         
-        attributesDict[NSParagraphStyleAttributeName] = paragraphStyle
+        attributesDict[.paragraphStyle] = paragraphStyle
         //attributesDict[NSTextEffectAttributeName] = NSTextEffectLetterpressStyle;
         
         return attributesDict
