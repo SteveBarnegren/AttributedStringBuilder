@@ -7,7 +7,15 @@
 //
 
 import Foundation
-import UIKit
+
+#if os(OSX)
+    import AppKit
+    public typealias UIFont = NSFont
+    public typealias UIColor = NSColor
+    public typealias UIImage = NSImage
+#else
+    import UIKit
+#endif
 
 public class AttributedStringBuilder {
     

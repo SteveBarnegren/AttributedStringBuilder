@@ -15,6 +15,7 @@ Attributed String Builder makes it easy to create NSAttributedStrings with a 'sw
 
   s.ios.deployment_target = '9.0'
   s.tvos.deployment_target = '9.0'
+  s.osx.deployment_target = '10.12'
 
   s.source_files = 'AttributedStringBuilder/AttributedStringBuilder/*'
  
