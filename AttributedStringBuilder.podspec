@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
   s.name             = "AttributedStringBuilder"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "Easy Attributed Strings"
 
   s.description      = <<-DESC
-Attributed String Builder makes it easy to create NSAttributedStrings with a 'swift' syntax
+Attributed String Builder makes it easy to create NSAttributedStrings with a 'swifty' syntax
                        DESC
 
   s.homepage         = "https://github.com/SteveBarnegren/AttributedStringBuilder"
