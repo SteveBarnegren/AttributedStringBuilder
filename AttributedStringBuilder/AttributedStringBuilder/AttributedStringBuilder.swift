@@ -152,7 +152,13 @@ public class AttributedStringBuilder {
         let attributes = attributesDictionary(withOverrides: attributes)
         let attributedString = NSAttributedString(string: string, attributes: attributes)
         masterAttributedString.append(attributedString)
-        return self;
+        return self
+    }
+    
+    @discardableResult public func attributedText(_ attributedString: NSAttributedString) -> AttributedStringBuilder {
+        
+        masterAttributedString.append(attributedString)
+        return self
     }
     
     @discardableResult public func spaces(_ number: Int, attributes: [Attribute] = []) -> AttributedStringBuilder {
