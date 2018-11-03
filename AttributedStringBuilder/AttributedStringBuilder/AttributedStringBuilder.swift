@@ -52,7 +52,7 @@ public class AttributedStringBuilder {
         case alignment(NSTextAlignment)
         case lineSpacing(CGFloat)
         
-        var key: NSAttributedStringKey {
+        var key: NSAttributedString.Key {
             return keyAndValue(for: self).0
         }
         
@@ -60,7 +60,7 @@ public class AttributedStringBuilder {
             return keyAndValue(for: self).1
         }
         
-        private func keyAndValue(for attribute: Attribute) -> (NSAttributedStringKey, Any?) {
+        private func keyAndValue(for attribute: Attribute) -> (NSAttributedString.Key, Any?) {
             
             func configureParagraph(configure: (NSMutableParagraphStyle) -> () ) -> NSMutableParagraphStyle {
                 let p = NSMutableParagraphStyle()
@@ -251,11 +251,11 @@ public class AttributedStringBuilder {
     
     // MARK: - Create attributes
     
-    private func attributesDictionary(withOverrides overrides: [Attribute]) -> Dictionary<NSAttributedStringKey, Any> {
+    private func attributesDictionary(withOverrides overrides: [Attribute]) -> Dictionary<NSAttributedString.Key, Any> {
         
         // NSParagraphStyle is cumulative, everything else overrides the previous
         
-        var attributesDict = Dictionary<NSAttributedStringKey, Any>()
+        var attributesDict = Dictionary<NSAttributedString.Key, Any>()
         
         let paragraphStyle = NSMutableParagraphStyle()
         
