@@ -101,7 +101,7 @@
 		67A6830B1F12109F007154C8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Steve Barnegren";
 				TargetAttributes = {
 					67A683131F12109F007154C8 = {
@@ -113,11 +113,12 @@
 			};
 			buildConfigurationList = 67A6830E1F12109F007154C8 /* Build configuration list for PBXProject "AttributedStringBuilder" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
 				en,
+				Base,
 			);
 			mainGroup = 67A6830A1F12109F007154C8;
 			productRefGroup = 67A683151F12109F007154C8 /* Products */;
