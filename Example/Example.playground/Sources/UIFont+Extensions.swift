@@ -3,7 +3,7 @@ import UIKit
 
 public extension UIFont {
     
-    public static func printAvailableFonts() {
+    static func printAvailableFonts() {
         
         for familyName:String in UIFont.familyNames {
             print("Family Name: \(familyName)")
