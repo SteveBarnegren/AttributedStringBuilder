@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "AttributedStringBuilder"
-  s.version          = "1.0"
+  s.version          = "1.1"
   s.summary          = "Easy Attributed Strings"
 
   s.description      = <<-DESC
@@ -16,7 +16,7 @@ Attributed String Builder makes it easy to create NSAttributedStrings with a 'sw
   s.ios.deployment_target = '9.0'
   s.tvos.deployment_target = '9.0'
   s.osx.deployment_target = '10.12'
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
 
   s.source_files = 'AttributedStringBuilder/AttributedStringBuilder/*.swift'
  
