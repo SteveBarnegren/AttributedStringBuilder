@@ -3,6 +3,7 @@
  ## A more fancy example
  */
 import Foundation
+import UIKit
 import AttributedStringBuilder
 /*:
  **Make an `AttributedStringBuider` and set default alignment**

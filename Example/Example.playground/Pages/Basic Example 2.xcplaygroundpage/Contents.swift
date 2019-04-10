@@ -3,6 +3,7 @@
  ## Basic Example 2
  */
 import Foundation
+import UIKit
 import AttributedStringBuilder
 /*:
  **Make an `AttributedStringBuider` with some default attributes**

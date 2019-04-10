@@ -12,7 +12,7 @@ let builder = AttributedStringBuilder()
  */
 builder.defaultAttributes = [
     .textColor(UIColor.black),
-    .font( UIFont.systemFont(ofSize: 16, weight: UIFontWeightRegular) ),
+    .font( UIFont.systemFont(ofSize: 16, weight: .regular) ),
     .alignment(.center),
 ]
 /*:
