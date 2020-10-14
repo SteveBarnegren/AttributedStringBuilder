@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "AttributedStringBuilder"
-  s.version          = "1.2"
+  s.version          = "1.2.0"
   s.summary          = "Easy Attributed Strings"
 
   s.description      = <<-DESC
