@@ -31,8 +31,8 @@ public class AttributedStringBuilder {
         case backgroundColor(UIColor?)          // NSBackgroundColorAttributeName
         case ligitures(Bool)                    // NSLigatureAttributeName
         case kerning(CGFloat)                   // NSKernAttributeName
-        case strikethrough(Bool)                // NSStrikethroughStyleAttributeName
-        case underline(Bool)                    // NSUnderlineStyleAttributeName
+        case strikethrough(NSUnderlineStyle)    // NSStrikethroughStyleAttributeName
+        case underline(NSUnderlineStyle)        // NSUnderlineStyleAttributeName
         case strokeColor(UIColor)               // NSStrokeColorAttributeName
         case strokeWidth(CGFloat)               // NSStrokeWidthAttributeName
         case shadow(NSShadow?)                  // NSShadowAttributeName
