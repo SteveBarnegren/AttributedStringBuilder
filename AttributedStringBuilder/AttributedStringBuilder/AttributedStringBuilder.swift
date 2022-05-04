@@ -130,8 +130,10 @@ public class AttributedStringBuilder {
     // MARK: - Properties
 
     private var masterAttributedString = NSMutableAttributedString()
+    private var masterAccessibilityStrings: [String] = []
     
     public var attributedString: NSAttributedString {
+        masterAttributedString.accessibilityLabel = masterAccessibilityStrings.joined(separator: ", ")
         return masterAttributedString
     }
     
@@ -147,17 +149,22 @@ public class AttributedStringBuilder {
     
     public init() {}
     
-    @discardableResult public func text(_ string: String, attributes: [Attribute] = []) -> AttributedStringBuilder {
+    @discardableResult public func text(_ string: String, attributes: [Attribute] = [], accessibilityString: String? = nil) -> AttributedStringBuilder {
         
         let attributes = attributesDictionary(withOverrides: attributes)
         let attributedString = NSAttributedString(string: string, attributes: attributes)
+
         masterAttributedString.append(attributedString)
+        masterAccessibilityStrings.append(accessibilityString ?? string)
+
         return self
     }
     
-    @discardableResult public func attributedText(_ attributedString: NSAttributedString) -> AttributedStringBuilder {
+    @discardableResult public func attributedText(_ attributedString: NSAttributedString, accessibilityString: String? = nil) -> AttributedStringBuilder {
         
         masterAttributedString.append(attributedString)
+        masterAccessibilityStrings.append(accessibilityString ?? attributedString.string)
+        
         return self
     }
     
