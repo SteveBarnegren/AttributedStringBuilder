@@ -155,7 +155,7 @@ public class AttributedStringBuilder {
         let attributedString = NSAttributedString(string: string, attributes: attributes)
 
         masterAttributedString.append(attributedString)
-        masterAccessibilityStrings.append(accessibilityString ?? string)
+        appendAccessibilityString(accessibilityString, attributedStringText: string)
 
         return self
     }
@@ -163,7 +163,7 @@ public class AttributedStringBuilder {
     @discardableResult public func attributedText(_ attributedString: NSAttributedString, accessibilityString: String? = nil) -> AttributedStringBuilder {
         
         masterAttributedString.append(attributedString)
-        masterAccessibilityStrings.append(accessibilityString ?? attributedString.string)
+        appendAccessibilityString(accessibilityString, attributedStringText: attributedString.string)
         
         return self
     }
@@ -178,7 +178,7 @@ public class AttributedStringBuilder {
     }
     
     @discardableResult public func space(attributes: [Attribute] = []) -> AttributedStringBuilder {
-        return text(" ", attributes: attributes)
+        return text(" ", attributes: attributes, accessibilityString: "")
     }
     
     @discardableResult public func newlines(_ number: Int, attributes: [Attribute] = []) -> AttributedStringBuilder {
@@ -191,7 +191,7 @@ public class AttributedStringBuilder {
     }
     
     @discardableResult public func newline(attributes: [Attribute] = []) -> AttributedStringBuilder {
-        return text("\n", attributes: attributes)
+        return text("\n", attributes: attributes, accessibilityString: "")
     }
     
     @discardableResult public func tabs(_ number: Int, attributes: [Attribute] = []) -> AttributedStringBuilder {
@@ -283,5 +283,16 @@ public class AttributedStringBuilder {
         
         return attributesDict
     }
-    
+
+    private func appendAccessibilityString(_ accessibilityString: String?, attributedStringText: String) {
+        if let accessibilityString = accessibilityString {
+            if accessibilityString.isEmpty {
+                return
+            } else {
+                masterAccessibilityStrings.append(accessibilityString)
+            }
+        } else {
+            masterAccessibilityStrings.append(attributedStringText)
+        }
+    }
 }
