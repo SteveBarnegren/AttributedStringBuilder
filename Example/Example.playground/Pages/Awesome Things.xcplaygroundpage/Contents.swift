@@ -41,7 +41,7 @@ let awesomeAttributes: [AttributedStringBuilder.Attribute] = [
     .kerning(5),
     .shadow(shadow),
     .skew(0.3),
-    .underline(true)
+    .underline(.single)
 ]
 /*:
  **Build the string**

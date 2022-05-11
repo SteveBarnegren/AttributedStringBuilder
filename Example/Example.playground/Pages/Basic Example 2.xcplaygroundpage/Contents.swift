@@ -19,7 +19,7 @@ builder.defaultAttributes = [
  */
 builder
     .text("It's ")
-    .text("Easy ", attributes: [.underline(true), .textColor(UIColor.blue)])
+    .text("Easy ", attributes: [.underline(.single), .textColor(UIColor.blue)])
     .text("To ", attributes: [.strokeWidth(2), .textColor(UIColor.black)])
     .text("Adjust ", attributes: [.skew(0.3), .textColor(UIColor.magenta)])
     .text("Attributes ", attributes: [.font(UIFont(name: "Baskerville-Bold", size: 30)!)])

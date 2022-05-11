@@ -62,7 +62,7 @@ builder.defaultAttributes = [
 
 builder
     .text("It's ")
-    .text("Easy ", attributes: [.underline(true), .textColor(UIColor.blue)])
+    .text("Easy ", attributes: [.underline(.single), .textColor(UIColor.blue)])
     .text("To ", attributes: [.strokeWidth(2), .textColor(UIColor.black)])
     .text("Adjust ", attributes: [.skew(0.3), .textColor(UIColor.magenta)])
     .text("Attributes ", attributes: [.font(UIFont(name: "Baskerville-Bold", size: 30)!)])
@@ -105,7 +105,7 @@ let awesomeAttributes: [AttributedStringBuilder.Attribute] = [
     .kerning(5),
     .shadow(shadow),
     .skew(0.3),
-    .underline(true)
+    .underline(.single)
 ]
 
 // Build the string
@@ -130,7 +130,7 @@ let font = UIFont.systemFont(ofSize: 90)
 let builder = AttributedStringBuilder()
 builder.defaultAttributes = [
     .font(font),
-    .underline(true),
+    .underline(.single),
     .textColor(UIColor.purple)
 ]
         

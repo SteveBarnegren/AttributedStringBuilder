@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         let builder = AttributedStringBuilder()
         builder.defaultAttributes = [
             .font(font),
-            .underline(true),
+            .underline(.single),
             .textColor(UIColor.purple)
         ]
         
