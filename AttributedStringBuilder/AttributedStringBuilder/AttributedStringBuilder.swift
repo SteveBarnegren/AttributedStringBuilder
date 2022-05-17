@@ -84,9 +84,9 @@ public class AttributedStringBuilder {
             case .kerning(let value):
                 return (.kern, value)
             case .strikethrough(let value):
-                return (.strikethroughStyle, value)
+                return (.strikethroughStyle, value.rawValue)
             case .underline(let value):
-                return (.underlineStyle, value)
+                return (.underlineStyle, value.rawValue)
             case .strokeColor(let value):
                 return (.strokeColor, value)
             case .strokeWidth(let value):
